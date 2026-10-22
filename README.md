@@ -239,3 +239,7 @@ Fuse combines existing pieces:
 - **Privacy Pass** (RFC 9576–9578), whose HTTP authentication shape Fuse's
   headers follow.
 - **Certificate Transparency** (RFC 6962), the model for the shared log.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
