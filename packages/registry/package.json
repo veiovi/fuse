@@ -1,0 +1,20 @@
+{
+  "name": "@fuse/registry",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Deposit-backed Fuse registry: issues credentials (Merkle tree leaves), publishes valid roots, slashes burned keys.",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "dependencies": {
+    "@fuse/core": "0.1.0",
+    "express": "5.1.0"
+  },
+  "bin": {
+    "fuse-registry": "./src/cli.js"
+  }
+}

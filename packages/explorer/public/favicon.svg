@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .body { fill: none; stroke: #2b4cf2; stroke-width: 2.6; }
+    .wire { stroke: #2b4cf2; stroke-width: 2.6; stroke-linecap: round; }
+    @media (prefers-color-scheme: dark) { .body, .wire { stroke: #8ea3ff; } }
+  </style>
+  <rect class="body" x="2.5" y="9.5" width="27" height="13" rx="6.5"/>
+  <path class="wire" d="M8 16h16"/>
+</svg>

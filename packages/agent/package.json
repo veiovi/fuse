@@ -1,0 +1,19 @@
+{
+  "name": "@fuse/agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Fuse agent SDK and CLI: holds a credential, spends daily slots, answers Fuse challenges automatically.",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "dependencies": {
+    "@fuse/core": "0.1.0"
+  },
+  "bin": {
+    "fuse": "./src/cli.js"
+  }
+}

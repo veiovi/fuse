@@ -1,0 +1,20 @@
+{
+  "name": "@fuse/extension",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Fuse Chrome extension (Manifest V3): holds a credential and answers Fuse challenges with zero-knowledge proofs generated in the browser.",
+  "scripts": {
+    "build": "node build.js",
+    "test": "node --test test/",
+    "e2e": "node test/e2e.mjs"
+  },
+  "dependencies": {
+    "@fuse/core": "0.1.0",
+    "snarkjs": "0.7.6"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "playwright-core": "1.62.1"
+  }
+}

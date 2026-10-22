@@ -1,0 +1,23 @@
+{
+  "name": "@fuse/log",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared append-only Fuse slot-tag log: verifies proofs, detects reused slots, recovers and publishes cheaters' keys.",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "dependencies": {
+    "@fuse/core": "0.1.0",
+    "express": "5.1.0"
+  },
+  "bin": {
+    "fuse-log": "./src/cli.js"
+  },
+  "devDependencies": {
+    "@fuse/registry": "0.1.0"
+  }
+}

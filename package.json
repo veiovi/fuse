@@ -1,0 +1,19 @@
+{
+  "name": "fuse",
+  "private": true,
+  "type": "module",
+  "description": "Fuse: anonymous per-day budgets for protected web endpoints, enforced with zero-knowledge proofs.",
+  "workspaces": [
+    "packages/*",
+    "demo"
+  ],
+  "scripts": {
+    "build:circuit": "bash scripts/build-circuit.sh",
+    "test": "node --test --test-concurrency=1 \"packages/*/test/*.test.js\" \"demo/**/*.test.js\"",
+    "demo": "node demo/run.js",
+    "build:extension": "npm run build -w @fuse/extension"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

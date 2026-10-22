@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Fuse network explorer</title>
+<meta name="description" content="Live view of a Fuse network: deposit-backed credentials, a shared log of anonymous slot tags, burned keys and per-site pseudonyms.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/app.css">
+<script type="module" src="/app.js"></script>
+</head>
+<body>
+<div class="board">
+
+  <header class="hero">
+    <h1 class="wordmark">Fuse</h1>
+    <div class="hero-copy">
+      <p class="thesis">Servers stop asking “who is this?” and ask “has this client used up its budget?”</p>
+      <p class="lede">A deposit backs one credential. It buys a few anonymous first contacts a day, anywhere on the web, and each site sees a pseudonym no other site can link. Spend the same slot twice and the two points give away the key, so the credential burns.</p>
+    </div>
+    <nav class="hero-meta" aria-label="Network">
+      <ul class="services" id="services">
+        <li class="service" data-source="registry">Registry</li>
+        <li class="service" data-source="log">Shared log</li>
+      </ul>
+      <a class="install-link" href="/install">Install the extension or SDK</a>
+    </nav>
+  </header>
+
+  <ol class="steps" aria-label="How Fuse works">
+    <li class="step" data-step="registry">
+      <span class="step-n" aria-hidden="true">1</span>
+      <span class="step-title">Back it once</span>
+      <span class="step-note">A deposit at the registry makes one credential: a leaf in its Merkle tree.</span>
+    </li>
+    <li class="step" data-step="log">
+      <span class="step-n" aria-hidden="true">2</span>
+      <span class="step-title">Spend a daily budget</span>
+      <span class="step-note">Every first contact, on any site, spends one slot and leaves one tag on the shared log.</span>
+    </li>
+    <li class="step" data-step="sites">
+      <span class="step-n" aria-hidden="true">3</span>
+      <span class="step-title">Get a sticky local pseudonym</span>
+      <span class="step-note">A site sees the same pseudonym on every visit. Two sites can’t tell it’s you.</span>
+    </li>
+  </ol>
+
+  <section class="panel registry" id="registry" aria-labelledby="registry-title">
+    <div class="panel-bar">
+      <h2 id="registry-title">Registry</h2>
+      <a class="panel-host" data-link="registry" href="#"></a>
+    </div>
+    <p class="panel-down" hidden></p>
+    <div class="figures">
+      <p class="figure"><span class="figure-n" data-field="size">–</span><span class="figure-label">credentials</span></p>
+      <dl class="tally">
+        <div><dt><span class="fuse" aria-hidden="true"></span>Active</dt><dd data-field="active">–</dd></div>
+        <div class="tally-burned"><dt><span class="fuse is-burned" aria-hidden="true"></span>Burned</dt><dd data-field="burned">–</dd></div>
+        <div><dt><span class="fuse is-withdrawn" aria-hidden="true"></span>Withdrawn</dt><dd data-field="withdrawn">–</dd></div>
+      </dl>
+    </div>
+    <div class="fusebox" id="fusebox" role="img" aria-label="One fuse per credential"></div>
+    <dl class="deposits">
+      <div><dt>demo credits locked</dt><dd data-field="locked">–</dd></div>
+      <div class="tally-burned"><dt>slashed from burned keys</dt><dd data-field="slashed">–</dd></div>
+    </dl>
+    <table class="tiers">
+      <caption>A thicker wire is a bigger daily budget.</caption>
+      <thead><tr><th scope="col">Tier</th><th scope="col">Deposit</th><th scope="col">Slots a day</th></tr></thead>
+      <tbody id="tiers"></tbody>
+    </table>
+    <p class="root">Tree root <code data-field="root">–</code></p>
+  </section>
+
+  <section class="panel burned" id="burned" aria-labelledby="burned-title">
+    <div class="panel-bar">
+      <h2 id="burned-title">Burned keys</h2>
+      <span class="panel-count" data-field="burned-count"></span>
+    </div>
+    <div id="burns" class="burns"></div>
+  </section>
+
+  <section class="panel log" id="log" aria-labelledby="log-title">
+    <div class="panel-bar">
+      <h2 id="log-title">Shared log</h2>
+      <a class="panel-host" data-link="log" href="#"></a>
+    </div>
+    <p class="panel-down" hidden></p>
+    <div class="figures">
+      <p class="figure"><span class="figure-n" data-field="today">–</span><span class="figure-label">slots spent today</span></p>
+      <dl class="tally">
+        <div><dt>All time</dt><dd data-field="size">–</dd></div>
+        <div><dt>Budgets reset in</dt><dd data-field="reset">–</dd></div>
+      </dl>
+    </div>
+    <p class="sth" data-field="sth"></p>
+    <ol class="tape" id="tape" aria-label="Most recent slot tags, newest first"></ol>
+    <p class="tape-empty" id="tape-empty" hidden>No slots spent yet. Run a scenario: each first contact lands here as one tag.</p>
+    <p class="panel-note">Tags look random, and that is the point: a tag proves a slot was spent today, not who spent it or where.</p>
+  </section>
+
+  <section class="panel sites" id="sites" aria-labelledby="sites-title">
+    <div class="panel-bar">
+      <h2 id="sites-title">Sites</h2>
+    </div>
+    <div id="site-list" class="site-list"></div>
+    <p class="site-legend">A dashed tag is on probation for its first 24 hours. A struck-through tag is banned, and bans stick: the same credential always comes back as the same pseudonym.</p>
+  </section>
+
+  <aside class="runner" id="scenarios" aria-labelledby="runner-title">
+    <div class="runner-inner">
+      <div class="runner-head">
+        <h2 id="runner-title">Scenarios</h2>
+        <p>Each one is a scripted client spending real slots on this network. Run one and watch the other panels.</p>
+      </div>
+      <ul class="scenario-list" id="scenario-list"></ul>
+      <section class="console" aria-labelledby="console-title">
+        <div class="console-head">
+          <h3 id="console-title" class="console-title">Output</h3>
+          <span class="console-status" id="console-status" role="status"></span>
+          <p class="console-summary" id="console-summary" hidden></p>
+        </div>
+        <ol class="console-lines" id="console-lines"></ol>
+        <p class="console-empty" id="console-empty">Choose a scenario to see its output here.</p>
+      </section>
+    </div>
+  </aside>
+
+</div>
+</body>
+</html>

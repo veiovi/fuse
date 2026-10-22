@@ -1,0 +1,22 @@
+{
+  "name": "@fuse/demo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Fuse demo: two protected sites, scenarios, and a one-command runner.",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "dependencies": {
+    "@fuse/core": "0.1.0",
+    "@fuse/registry": "0.1.0",
+    "@fuse/log": "0.1.0",
+    "@fuse/gateway": "0.1.0",
+    "@fuse/agent": "0.1.0",
+    "@fuse/explorer": "0.1.0",
+    "express": "5.1.0"
+  }
+}

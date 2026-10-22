@@ -1,0 +1,20 @@
+{
+  "name": "@fuse/gateway",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Fuse gateway: Express middleware and reverse proxy that require Fuse proofs on protected routes and cache public ones.",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "dependencies": {
+    "@fuse/core": "0.1.0",
+    "express": "5.1.0"
+  },
+  "bin": {
+    "fuse-gateway": "./src/cli.js"
+  }
+}

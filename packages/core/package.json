@@ -1,0 +1,23 @@
+{
+  "name": "@fuse/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared Fuse cryptography and wire format: Poseidon, Merkle tree, shares, token encoding, Groth16 prove/verify.",
+  "exports": {
+    ".": "./src/index.js",
+    "./node": "./src/node.js",
+    "./artifacts/*": "./artifacts/*"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "@noble/hashes": "1.8.0",
+    "poseidon-lite": "0.3.0",
+    "snarkjs": "0.7.6"
+  },
+  "devDependencies": {
+    "circomlib": "2.0.5"
+  }
+}

@@ -1,0 +1,10 @@
+#!/bin/sh
+while read local_ref local_sha remote_ref remote_sha; do
+    case "$remote_ref" in
+        refs/heads/main)
+            echo "Direct updates to main are blocked. Finish the feature through a squash pull request." >&2
+            exit 1
+            ;;
+    esac
+done
+exit 0

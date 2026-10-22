@@ -1,0 +1,20 @@
+{
+  "name": "@fuse/explorer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Fuse network explorer: live view of the registry, shared log, burned keys and demo sites; runs demo scenarios.",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "dependencies": {
+    "@fuse/core": "0.1.0",
+    "express": "5.1.0"
+  },
+  "devDependencies": {
+    "playwright-core": "1.62.1"
+  }
+}
